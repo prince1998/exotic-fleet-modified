@@ -13,7 +13,7 @@
                 <div class="navbar-collapse collapse" id="mc-horizontal-menu-collapse">
 	<div class="nav-outer">
 		<ul class="nav navbar-nav">
-			<li class="active dropdown yamm-fw">
+			<li class="dropdown yamm-fw">
 				<a href="index.php" data-hover="dropdown" class="dropdown-toggle">catalogue</a>
 
 			</li>
@@ -24,11 +24,10 @@
 
             </li>
 
-            <li class="dropdown yamm-fw">
-                <a href="./about-us.php" data-hover="dropdown" class="dropdown-toggle">About Us</a>
+            <li class="active dropdown yamm-fw">
+                <a href="about-us.php" data-hover="dropdown" class="dropdown-toggle">About Us</a>
 
             </li>
-
               <?php $sql=mysqli_query($con,"select id,categoryName  from category limit 6");
 while($row=mysqli_fetch_array($sql))
 {

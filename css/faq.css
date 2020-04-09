@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css?family=Hind:300,400,500');
+
+body {
+    font-family: Hind, sans-serif;
+}
+
+.accordion a.accordion-anchor {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem 3rem 1rem 1rem;
+    color: #7288A2;
+    font-size: 2rem;
+    font-weight: 400;
+    border-bottom: 1px solid #DDD;
+}
+
+.accordion a.active.accordion-anchor {
+    color: #03B5D2;
+    border-bottom: 1px solid #03B5D2;
+}
+
+a.contact {
+    font-size: 2rem;
+    padding: 0;
+    margin: 0;
+    color: #666;
+    text-decoration: underline;
+}
+
+.accordion a.accordion-anchor:hover, .accordion a.accordion-anchor:hover::after {
+    cursor: pointer;
+    color: #035BD2;
+}
+
+/* Down arrow on closed accordion */
+.accordion a.accordion-anchor::after {
+    font-family: "Font Awesome 5 Free";
+    content: '\f358';
+    position: absolute;
+    float: right;
+    right: 1rem;
+    font-size: 2rem;
+    color: #03B5D2;
+}
+
+/* Up Arrow on opened accordion */
+.accordion a.active.accordion-anchor::after {
+    font-family: "Font Awesome 5 Free";
+    content: '\f35b';
+    color: #03B5D2;
+}
+
+/* Accordion content */
+.accordion .content p {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.accordion .content {
+    /* Hide Accordion initiialy */
+    opacity: 0;
+    max-height: 0;
+    padding: 0 1rem;
+    border-bottom: 1px solid #DDD;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.accordion .content.active {
+    /* Display the active accordion */
+    opacity: 1;
+    max-height: 100%;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}

@@ -16,15 +16,13 @@
     </div><!-- /.footer-logo -->
 
      <div class="module-body m-t-20">
-        <p class="about-us">Exotic Fleet is a leading digital marketplace and solutions provider for the automotive industry that connects car shoppers with dealers. Launched in 2020 and headquartered in Mumbai, the Company empowers shoppers with the data, resources and digital tools needed to make informed buying decisions and seamlessly connect with automotive retailers. In a rapidly changing market, exoticfleet.com enables dealerships and OEMs with innovative technical solutions and data-driven intelligence to better reach and influence ready-to-buy shoppers, increase inventory turn and gain market share. </p>
+        <p class="about-us">Exotic Fleet is a leading digital marketplace and solutions provider for the automotive industry that connects car shoppers with dealers.</p>
 
         <div class="social-icons">
 
-        <a href="http://facebook.com/transvelo"><i class="icon fa fa-facebook"></i></a>
-        <a href="#"><i class="icon fa fa-twitter"></i></a>
-        <a href="#"><i class="icon fa fa-linkedin"></i></a>
-        <a href="#"><i class="icon fa fa-rss"></i></a>
-        <a href="#"><i class="icon fa fa-pinterest"></i></a>
+        <a href="https://www.facebook.com/Exotic-Fleet-100725378268898/"><i class="icon fa fa-facebook"></i></a>
+        <a href="https://twitter.com/ExoticFleet"><i class="icon fa fa-twitter"></i></a>
+
 
         </div><!-- /.social-icons -->
     </div><!-- /.module-body -->

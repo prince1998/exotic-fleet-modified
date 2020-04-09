@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 error_reporting(0);
 include('includes/config.php');
@@ -21,7 +21,7 @@ if(isset($_GET['action']) && $_GET['action']=="add"){
 $pid=intval($_GET['pid']);
 if(isset($_GET['pid']) && $_GET['action']=="wishlist" ){
 	if(strlen($_SESSION['login'])==0)
-    {   
+    {
 header('location:login.php');
 }
 else
@@ -74,12 +74,18 @@ if(isset($_POST['submit']))
 		<link href="assets/css/dark-green.css" rel="alternate stylesheet" title="Darkgreen color">
 		<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 
-        <!-- Fonts --> 
+        <!-- Fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" href="assets/images/favicon.ico">
+        <script type="text/javascript">
+        function addedToCart(){
+
+            alert("Added to cart!");
+        }
+        </script>
 	</head>
     <body class="cnt-home">
-	
+
 <header class="header-style-1">
 
 	<!-- ============================================== TOP MENU ============================================== -->
@@ -122,7 +128,6 @@ while ($rw=mysqli_fetch_array($ret)) {
 
 					<!-- ==============================================CATEGORY============================================== -->
 <div class="sidebar-widget outer-bottom-xs wow fadeInUp">
-	<h3 class="section-title">Category</h3>
 	<div class="sidebar-widget-body m-t-10">
 		<div class="accordion">
 
@@ -136,7 +141,7 @@ while($row=mysqli_fetch_array($sql))
 	                   <?php echo $row['categoryName'];?>
 	                </a>
 	            </div>
-	          
+
 	        </div>
 	        <?php } ?>
 	    </div>
@@ -144,66 +149,64 @@ while($row=mysqli_fetch_array($sql))
 </div>
 	<!-- ============================================== CATEGORY : END ============================================== -->					<!-- ============================================== HOT DEALS ============================================== -->
 <div class="sidebar-widget hot-deals wow fadeInUp">
-	<h3 class="section-title">hot deals</h3>
 	<div class="owl-carousel sidebar-carousel custom-carousel owl-theme outer-top-xs">
-		
+
 								   <?php
 $ret=mysqli_query($con,"select * from products order by rand() limit 4 ");
 while ($rws=mysqli_fetch_array($ret)) {
 
 ?>
 
-								        
+
 													<div class="item">
 					<div class="products">
 						<div class="hot-deal-wrapper">
 							<div class="image">
 								<img src="admin/productimages/<?php echo htmlentities($rws['productName']);?>/<?php echo htmlentities($rws['productImage1']);?>"  width="200" height="334" alt="">
 							</div>
-							
+
 						</div><!-- /.hot-deal-wrapper -->
 
 						<div class="product-info text-left m-t-20">
 							<h3 class="name"><a href="product-details.php?pid=<?php echo htmlentities($rws['id']);?>"><?php echo htmlentities($rws['productName']);?></a></h3>
-							<div class="rating rateit-small"></div>
 
-							<div class="product-price">	
+							<div class="product-price">
 								<span class="price">
 									Rs. <?php echo htmlentities($rws['productPrice']);?>.00
 								</span>
-									
-							    <span class="price-before-discount">Rs.<?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>					
-							
+
+							    <span class="price-before-discount">Rs.<?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
+
 							</div><!-- /.product-price -->
-							
+
 						</div><!-- /.product-info -->
 
 						<div class="cart clearfix animate-effect">
 							<div class="action">
-								
+
 								<div class="add-cart-button btn-group">
 									<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
-								<i class="fa fa-shopping-cart"></i>													
+								<i class="fa fa-shopping-cart"></i>
 							</button>
 						<a href="product-details.php?page=product&action=add&id=<?php echo $rws['id']; ?>" class="lnk btn btn-primary">Add to cart</a>
-													
-															
+
+
 								</div>
-								
+
 							</div><!-- /.action -->
 						</div><!-- /.cart -->
-					</div>	
-					</div>		
-					<?php } ?>        
-						
-	    
+					</div>
+					</div>
+					<?php } ?>
+
+
     </div><!-- /.sidebar-widget -->
 </div>
 
 <!-- ============================================== COLOR: END ============================================== -->
 				</div>
 			</div><!-- /.sidebar -->
-<?php 
+<?php
 $ret=mysqli_query($con,"select * from products where id='$pid'");
 while($row=mysqli_fetch_array($ret))
 {
@@ -269,17 +272,17 @@ while($row=mysqli_fetch_array($ret))
                     </a>
                 </div>
 
-               
-               
-                
+
+
+
             </div><!-- /#owl-single-product-thumbnails -->
 
-            
+
 
         </div>
 
     </div>
-</div>     			
+</div>
 
 
 
@@ -290,18 +293,17 @@ while($row=mysqli_fetch_array($ret))
 <?php $rt=mysqli_query($con,"select * from productreviews where productId='$pid'");
 $num=mysqli_num_rows($rt);
 {
-?>		
+?>
 							<div class="rating-reviews m-t-20">
 								<div class="row">
 									<div class="col-sm-3">
-										<div class="rating rateit-small"></div>
 									</div>
 									<div class="col-sm-8">
 										<div class="reviews">
 											<a href="#" class="lnk">(<?php echo htmlentities($num);?> Reviews)</a>
 										</div>
 									</div>
-								</div><!-- /.row -->		
+								</div><!-- /.row -->
 							</div><!-- /.rating-reviews -->
 <?php } ?>
 							<div class="stock-container info-container m-t-10">
@@ -309,14 +311,14 @@ $num=mysqli_num_rows($rt);
 									<div class="col-sm-3">
 										<div class="stock-box">
 											<span class="label">Availability :</span>
-										</div>	
+										</div>
 									</div>
 									<div class="col-sm-9">
 										<div class="stock-box">
 											<span class="value"><?php echo htmlentities($row['productAvailability']);?></span>
-										</div>	
+										</div>
 									</div>
-								</div><!-- /.row -->	
+								</div><!-- /.row -->
 							</div>
 
 
@@ -326,14 +328,14 @@ $num=mysqli_num_rows($rt);
 									<div class="col-sm-3">
 										<div class="stock-box">
 											<span class="label">Product Brand :</span>
-										</div>	
+										</div>
 									</div>
 									<div class="col-sm-9">
 										<div class="stock-box">
 											<span class="value"><?php echo htmlentities($row['productCompany']);?></span>
-										</div>	
+										</div>
 									</div>
-								</div><!-- /.row -->	
+								</div><!-- /.row -->
 							</div>
 
 
@@ -342,7 +344,7 @@ $num=mysqli_num_rows($rt);
 									<div class="col-sm-3">
 										<div class="stock-box">
 											<span class="label">Shipping Charge :</span>
-										</div>	
+										</div>
 									</div>
 									<div class="col-sm-9">
 										<div class="stock-box">
@@ -356,19 +358,19 @@ $num=mysqli_num_rows($rt);
 											}
 
 											?></span>
-										</div>	
+										</div>
 									</div>
-								</div><!-- /.row -->	
+								</div><!-- /.row -->
 							</div>
 
 							<div class="price-container info-container m-t-20">
 								<div class="row">
-									
+
 
 									<div class="col-sm-6">
 										<div class="price-box">
 											<span class="price">Rs. <?php echo htmlentities($row['productPrice']);?></span>
-											<span class="price-strike">Rs.<?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
+
 										</div>
 									</div>
 
@@ -380,7 +382,7 @@ $num=mysqli_num_rows($rt);
 											<a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Wishlist" href="product-details.php?pid=<?php echo htmlentities($row['id'])?>&&action=wishlist">
 											    <i class="fa fa-heart"></i>
 											</a>
-											
+
 											</a>
 										</div>
 									</div>
@@ -388,18 +390,18 @@ $num=mysqli_num_rows($rt);
 								</div><!-- /.row -->
 							</div><!-- /.price-container -->
 
-	
+
 
 
 
 
 							<div class="quantity-container info-container">
 								<div class="row">
-									
+
 									<div class="col-sm-2">
 										<span class="label">Qty :</span>
 									</div>
-									
+
 									<div class="col-sm-2">
 										<div class="cart-quantity">
 											<div class="quant-input">
@@ -413,34 +415,23 @@ $num=mysqli_num_rows($rt);
 									</div>
 
 									<div class="col-sm-7">
-										<a href="product-details.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
+										<a href="product-details.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="btn btn-primary" onclick="addedToCart()"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
 									</div>
 
-									
+
 								</div><!-- /.row -->
 							</div><!-- /.quantity-container -->
 
-							<div class="product-social-link m-t-20 text-right">
-								<span class="social-label">Share :</span>
-								<div class="social-icons">
-						            <ul class="list-inline">
-						                <li><a class="fa fa-facebook" href="http://facebook.com/transvelo"></a></li>
-						                <li><a class="fa fa-twitter" href="#"></a></li>
-						                <li><a class="fa fa-linkedin" href="#"></a></li>
-						                <li><a class="fa fa-rss" href="#"></a></li>
-						                <li><a class="fa fa-pinterest" href="#"></a></li>
-						            </ul><!-- /.social-icons -->
-						        </div>
-							</div>
 
-							
 
-							
+
+
+
 						</div><!-- /.product-info -->
 					</div><!-- /.col-sm-7 -->
 				</div><!-- /.row -->
 
-				
+
 				<div class="product-tabs inner-bottom-xs  wow fadeInUp">
 					<div class="row">
 						<div class="col-sm-3">
@@ -452,16 +443,16 @@ $num=mysqli_num_rows($rt);
 						<div class="col-sm-9">
 
 							<div class="tab-content">
-								
+
 								<div id="description" class="tab-pane in active">
 									<div class="product-tab">
 										<p class="text"><?php echo $row['productDescription'];?></p>
-									</div>	
+									</div>
 								</div><!-- /.tab-pane -->
 
 								<div id="review" class="tab-pane">
 									<div class="product-tab">
-																				
+
 										<div class="product-reviews">
 											<h4 class="title">Customer Reviews</h4>
 <?php $qry=mysqli_query($con,"select * from productreviews where productId='$pid'");
@@ -478,18 +469,18 @@ while($rvw=mysqli_fetch_array($qry))
 													<div class="text"><b>Price :</b>  <?php echo htmlentities($rvw['price']);?> Star</div>
 													<div class="text"><b>value :</b>  <?php echo htmlentities($rvw['value']);?> Star</div>
                                                 <div class="author m-t-15"><i class="fa fa-pencil-square-o"></i> <span class="name"><?php echo htmlentities($rvw['name']);?></span></div>													</div>
-											
+
 											</div>
 											<?php } ?><!-- /.reviews -->
 										</div><!-- /.product-reviews -->
 										<form role="form" class="cnt-form" name="review" method="post">
 
-										
+
 										<div class="product-add-review">
 											<h4 class="title">Write your own review</h4>
 											<div class="review-table">
 												<div class="table-responsive">
-													<table class="table table-bordered">	
+													<table class="table table-bordered">
 														<thead>
 															<tr>
 																<th class="cell-label">&nbsp;</th>
@@ -499,7 +490,7 @@ while($rvw=mysqli_fetch_array($qry))
 																<th>4 stars</th>
 																<th>5 stars</th>
 															</tr>
-														</thead>	
+														</thead>
 														<tbody>
 															<tr>
 																<td class="cell-label">Quality</td>
@@ -529,11 +520,11 @@ while($rvw=mysqli_fetch_array($qry))
 													</table><!-- /.table .table-bordered -->
 												</div><!-- /.table-responsive -->
 											</div><!-- /.review-table -->
-											
+
 											<div class="review-form">
 												<div class="form-container">
-													
-														
+
+
 														<div class="row">
 															<div class="col-sm-6">
 																<div class="form-group">
@@ -554,7 +545,7 @@ while($rvw=mysqli_fetch_array($qry))
 																</div><!-- /.form-group -->
 															</div>
 														</div><!-- /.row -->
-														
+
 														<div class="action text-right">
 															<button name="submit" class="btn btn-primary btn-upper">SUBMIT REVIEW</button>
 														</div><!-- /.action -->
@@ -563,12 +554,12 @@ while($rvw=mysqli_fetch_array($qry))
 												</div><!-- /.form-container -->
 											</div><!-- /.review-form -->
 
-										</div><!-- /.product-add-review -->										
-										
+										</div><!-- /.product-add-review -->
+
 							        </div><!-- /.product-tab -->
 								</div><!-- /.tab-pane -->
 
-				
+
 
 							</div><!-- /.tab-content -->
 						</div><!-- /.col -->
@@ -578,72 +569,10 @@ while($rvw=mysqli_fetch_array($qry))
 <?php $cid=$row['category'];
 			$subcid=$row['subCategory']; } ?>
 				<!-- ============================================== UPSELL PRODUCTS ============================================== -->
-<section class="section featured-product wow fadeInUp">
-	<h3 class="section-title">Realted Products </h3>
-	<div class="owl-carousel home-owl-carousel upsell-product custom-carousel owl-theme outer-top-xs">
-	   
-		<?php 
-$qry=mysqli_query($con,"select * from products where subCategory='$subcid' and category='$cid'");
-while($rw=mysqli_fetch_array($qry))
-{
-
-			?>	
-
-
-		<div class="item item-carousel">
-			<div class="products">
-	<div class="product">		
-		<div class="product-image">
-			<div class="image">
-				<a href="product-details.php?pid=<?php echo htmlentities($rw['id']);?>"><img  src="assets/images/blank.gif" data-echo="admin/productimages/<?php echo htmlentities($rw['id']);?>/<?php echo htmlentities($rw['productImage1']);?>" width="150" height="240" alt=""></a>
-			</div><!-- /.image -->			
-
-			                   		   
-		</div><!-- /.product-image -->
-			
-		
-		<div class="product-info text-left">
-			<h3 class="name"><a href="product-details.php?pid=<?php echo htmlentities($rw['id']);?>"><?php echo htmlentities($rw['productName']);?></a></h3>
-			<div class="rating rateit-small"></div>
-			<div class="description"></div>
-
-			<div class="product-price">	
-				<span class="price">
-					Rs.<?php echo htmlentities($rw['productPrice']);?>			</span>
-										     <span class="price-before-discount">Rs.
-										     <?php echo htmlentities($rw['productPriceBeforeDiscount']);?></span>
-									
-			</div><!-- /.product-price -->
-			
-		</div><!-- /.product-info -->
-					<div class="cart clearfix animate-effect">
-				<div class="action">
-					<ul class="list-unstyled">
-						<li class="add-cart-button btn-group">
-							<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
-								<i class="fa fa-shopping-cart"></i>													
-							</button>
-						<a href="product-details.php?page=product&action=add&id=<?php echo $rw['id']; ?>" class="lnk btn btn-primary">Add to cart</a>
-													
-						</li>
-	                   
-		              
-					</ul>
-				</div><!-- /.action -->
-			</div><!-- /.cart -->
-			</div><!-- /.product -->
-      
-			</div><!-- /.products -->
-		</div><!-- /.item -->
-		<?php } ?>
-	
-		
-			</div><!-- /.home-owl-carousel -->
-</section><!-- /.section -->
 
 
 <!-- ============================================== UPSELL PRODUCTS : END ============================================== -->
-			
+
 			</div><!-- /.col -->
 			<div class="clearfix"></div>
 		</div>
@@ -653,12 +582,12 @@ while($rw=mysqli_fetch_array($qry))
 <?php include('includes/footer.php');?>
 
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
-	
+
 	<script src="assets/js/bootstrap.min.js"></script>
-	
+
 	<script src="assets/js/bootstrap-hover-dropdown.min.js"></script>
 	<script src="assets/js/owl.carousel.min.js"></script>
-	
+
 	<script src="assets/js/echo.min.js"></script>
 	<script src="assets/js/jquery.easing-1.3.min.js"></script>
 	<script src="assets/js/bootstrap-slider.min.js"></script>
@@ -669,11 +598,11 @@ while($rw=mysqli_fetch_array($qry))
 	<script src="assets/js/scripts.js"></script>
 
 	<!-- For demo purposes – can be removed on production -->
-	
+
 	<script src="switchstylesheet/switchstylesheet.js"></script>
-	
+
 	<script>
-		$(document).ready(function(){ 
+		$(document).ready(function(){
 			$(".changecolor").switchstylesheet( { seperator:"color"} );
 			$('.show-theme-options').click(function(){
 				$(this).parent().toggleClass('open');
@@ -687,7 +616,7 @@ while($rw=mysqli_fetch_array($qry))
 	</script>
 	<!-- For demo purposes – can be removed on production : End -->
 
-	
+
 
 </body>
 </html>
