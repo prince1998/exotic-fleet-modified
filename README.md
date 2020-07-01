@@ -1,2 +1,7 @@
-# exotic-fleet-modified
- A completely new version of our website Exotic Fleet - A website to buy Exotic Fleets
+# Exotic Fleet
+A website to rent, buy and sell exotic fleets
+
+This is a project done by -
+* Priyansh Ramnani
+* Siddharth Sekar
+* Yash Shete 
